@@ -1,24 +1,20 @@
-const chilometri = prompt("Quanti Chilometri vuole percorrere?");
-console.log(chilometri);
+document.addEventListener('DOMContentLoaded', function() {
+    // Serve ad avviare il codice dopo che la pagina html è completamente caricata
+    const button = document.getElementById('calculateButton');
+    button.addEventListener('click', calculatePrice);
+});
 
-let età = prompt("Inserire età");
-console.log(età);
+function calculatePrice() {
+    const chilometri = document.getElementById('chilometri').value;
+    const età = document.getElementById('età').value;
 
-let prezzo = chilometri * 0.21;
-console.log(prezzo);
+    let price = chilometri * 0.21;
 
+    if (età < 18) {
+        price -= price * 0.20;  
+    } else if (età > 65) {
+        price -= price * 0.40;  
+    }
 
-if ( età < 18 ) {
-   prezzo -= prezzo * 0.20;
-   
+    console.log(`Il prezzo del biglietto è: €${price.toFixed(2)}`);
 }
-else if ( età > 65 ) {
-    prezzo -= prezzo * 0.40;
-
-}
-else {
-    prezzo = prezzo
-}
-
-
-alert("Il prezzo del suo biglietto è: " + prezzo.toFixed(2) + `€`);
